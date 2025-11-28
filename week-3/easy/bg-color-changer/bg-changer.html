@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>bg-changer</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body class="bg-black text-white flex justify-center items-center">
+    <div
+      class="color-bar bg-white h-14 flex justify-center items-center gap-4 fixed bottom-10 z-50 rounded-md w-fit p-4"
+    >
+      <button
+        class="bg-red-500 hover:bg-red-700 font-bold py-1 px-4 rounded-md"
+        onclick="changeBg('red')"
+      >
+        Red
+      </button>
+      <button
+        class="bg-yellow-500 hover:bg-yellow-700 font-bold py-1 px-4 rounded-md"
+        onclick="changeBg('yellow')"
+      >
+        Yellow
+      </button>
+      <button class="bg-black font-bold py-1 px-4 rounded-md">Black</button>
+      <button
+        class="bg-violet-700 hover:bg-violet-900 font-bold py-1 px-4 rounded-md"
+        onclick="changeBg('violet')"
+      >
+        Purple
+      </button>
+      <button
+        class="bg-green-500 hover:bg-green-700 font-bold py-1 px-4 rounded-md"
+        onclick="changeBg('green')"
+      >
+        Green
+      </button>
+      <p class="text-black">Custom:</p>
+      <input
+        type="color"
+        name=""
+        id="color"
+        class="border rounded-md p-1 h-10 w-10"
+        placeholder="Choose Custom Color"
+      />
+      <button
+        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded-md"
+        onclick="changeBg()"
+      >
+        Change
+      </button>
+      <button
+        class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-4 rounded-md"
+        onclick="changeBg('black')"
+      >
+        Reset
+      </button>
+    </div>
+    <script>
+      const colorBar = document.getElementsByClassName("color-bar")[0];
+      const body = document.body;
+
+      const changeBg = (color) => {
+        if (color) {
+          body.style.backgroundColor = color;
+        } else {
+          body.style.backgroundColor = document.getElementById("color").value;
+        }
+      };
+    </script>
+  </body>
+</html>

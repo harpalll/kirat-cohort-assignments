@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Pokemon</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+      .poke-card {
+        transition: all 0.5s ease;
+      }
+    </style>
+  </head>
+  <body class="bg-black text-white">
+    <div class="container border p-4 flex flex-col">
+      <div class="main-content p-2 flex justify-between">
+        <h1 class="text-3xl font-bold p-2">Pokemons</h1>
+        <div class="p-2 flex gap-4">
+          <input
+            type="text"
+            name=""
+            id="no"
+            placeholder="Enter No of Pokemon"
+            class="border rounded-md p-2"
+          />
+          <button
+            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md"
+            onclick="searchPokemon()"
+          >
+            Search
+          </button>
+        </div>
+      </div>
+
+      <h1 class="text-3xl font-bold text-center hintText">
+        Please search for pokemons !
+      </h1>
+
+      <div
+        class="poke-container flex flex-wrap gap-4 m-2 items-center justify-center"
+      ></div>
+    </div>
+    <script>
+      const url = "https://pokeapi.co/api/v2/pokemon";
+      const pokeContainer =
+        document.getElementsByClassName("poke-container")[0];
+      document.getElementById("no").focus();
+      document.getElementById("no").addEventListener("keyup", (e) => {
+        if (e.key === "Enter") {
+          searchPokemon();
+        }
+      });
+
+      const searchPokemon = () => {
+        const no = document.getElementById("no").value;
+        fetch(url + `?limit=${no}`)
+          .then((res) => res.json())
+          .then((data) => {
+            const pokemons = data.results;
+            pokeContainer.innerHTML = "";
+            document.getElementsByClassName("hintText")[0].innerHTML = "";
+            pokemons.forEach((pokemon, idx) => {
+              pokeContainer.innerHTML += `
+
+                   <div class="poke-card w-full md:w-1/2 lg:w-1/3 p-4 flex justify-around items-center border hover:cursor-pointer">
+                        <img
+                            class="w-30 h-30 rounded-lg"
+                            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${
+                              idx + 1
+                            }.png"
+                            alt="${pokemon.name}"
+                        />
+                        <div class="poke-card-content flex flex-col gap-4">
+                            <h2 class="text-xl font-bold">${pokemon.name}</h2>
+                        </div>
+                    </div>
+
+              `;
+            });
+          });
+      };
+    </script>
+  </body>
+</html>

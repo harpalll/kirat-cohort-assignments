@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Taskify</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body>
+    <div class="container flex justify-between p-2">
+      <div class="todo-section p-2 flex flex-col gap-2 drop-zone">
+        <div class="mb-2 flex justify-between items-center">
+          <h2 class="text-2xl">To Do</h2>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6 text-black"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="black"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M6 9l6-6 6 6M18 15l-6 6-6-6"
+            />
+          </svg>
+        </div>
+
+        <div
+          class="todo-item flex justify-between flex-col gap-2 bg-gray-50 p-2 min-w-80 border-2 border-gray-200 rounded-md"
+          draggable="true"
+        >
+          <h3 class="todo-title text-xl font-bold">Learn Tailwind</h3>
+          <p class="todo-desc text-gray-800">Learn Tailwind</p>
+          <span
+            class="bg-orange-400 text-white font-bold py-1 px-2 rounded-xl w-fit text-xs"
+          >
+            Medium
+          </span>
+        </div>
+
+        <div
+          class="todo-item flex justify-between flex-col gap-2 bg-gray-50 p-2 min-w-80 border-2 border-gray-200 rounded-md"
+          draggable="true"
+        >
+          <h3 class="todo-title text-xl font-bold">Learn Tailwind</h3>
+          <p class="todo-desc text-gray-800">Learn Tailwind</p>
+          <span
+            class="bg-orange-400 text-white font-bold py-1 px-2 rounded-xl w-fit text-xs"
+          >
+            Medium
+          </span>
+        </div>
+        <div class="input-section flex justify-between">
+          <input
+            type="text"
+            name=""
+            id="todo-input"
+            placeholder="Enter your todo"
+            class="border rounded-md p-2"
+          />
+          <button
+            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md"
+            onclick="addTodo()"
+          >
+            Add
+          </button>
+        </div>
+      </div>
+
+      <div class="in-progress p-2 flex flex-col gap-2 drop-zone">
+        <div class="mb-2 flex justify-between items-center">
+          <h2 class="text-2xl">In Progress</h2>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6 text-black"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="black"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M6 9l6-6 6 6M18 15l-6 6-6-6"
+            />
+          </svg>
+        </div>
+
+        <div
+          class="todo-item flex justify-between flex-col gap-2 bg-gray-50 p-2 min-w-80 border-2 border-gray-200 rounded-md"
+          draggable="true"
+        >
+          <h3 class="todo-title text-xl font-bold">Learn Tailwind</h3>
+          <p class="todo-desc text-gray-800">Learn Tailwind</p>
+          <span
+            class="bg-orange-400 text-white font-bold py-1 px-2 rounded-xl w-fit text-xs"
+          >
+            Medium
+          </span>
+        </div>
+        <div
+          class="todo-item flex justify-between flex-col gap-2 bg-gray-50 p-2 min-w-80 border-2 border-gray-200 rounded-md"
+          draggable="true"
+        >
+          <h3 class="todo-title text-xl font-bold">Learn Tailwind</h3>
+          <p class="todo-desc text-gray-800">Learn Tailwind</p>
+          <span
+            class="bg-orange-400 text-white font-bold py-1 px-2 rounded-xl w-fit text-xs"
+          >
+            Medium
+          </span>
+        </div>
+        <div class="input-section flex justify-between">
+          <input
+            type="text"
+            name=""
+            id="todo-input"
+            placeholder="Enter your todo"
+            class="border rounded-md p-2"
+          />
+          <button
+            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md"
+            onclick="addTodo()"
+          >
+            Add
+          </button>
+        </div>
+      </div>
+      <div class="under-review p-2 flex flex-col gap-2 drop-zone">
+        <div class="mb-2 flex justify-between items-center">
+          <h2 class="text-2xl">Under Review</h2>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6 text-black"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="black"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M6 9l6-6 6 6M18 15l-6 6-6-6"
+            />
+          </svg>
+        </div>
+
+        <div
+          class="todo-item flex justify-between flex-col gap-2 bg-gray-50 p-2 min-w-80 border-2 border-gray-200 rounded-md"
+          draggable="true"
+        >
+          <h3 class="todo-title text-xl font-bold">Learn Tailwind</h3>
+          <p class="todo-desc text-gray-800">Learn Tailwind</p>
+          <span
+            class="bg-orange-400 text-white font-bold py-1 px-2 rounded-xl w-fit text-xs"
+          >
+            Medium
+          </span>
+        </div>
+        <div
+          class="todo-item flex justify-between flex-col gap-2 bg-gray-50 p-2 min-w-80 border-2 border-gray-200 rounded-md"
+          draggable="true"
+        >
+          <h3 class="todo-title text-xl font-bold">Learn Tailwind</h3>
+          <p class="todo-desc text-gray-800">Learn Tailwind</p>
+          <span
+            class="bg-orange-400 text-white font-bold py-1 px-2 rounded-xl w-fit text-xs"
+          >
+            Medium
+          </span>
+        </div>
+        <div class="input-section flex justify-between">
+          <input
+            type="text"
+            name=""
+            id="todo-input"
+            placeholder="Enter your todo"
+            class="border rounded-md p-2"
+          />
+          <button
+            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md"
+            onclick="addTodo()"
+          >
+            Add
+          </button>
+        </div>
+      </div>
+      <div class="finished p-2 flex flex-col gap-2 drop-zone">
+        <div class="mb-2 flex justify-between items-center">
+          <h2 class="text-2xl">Finished</h2>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6 text-black"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="black"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M6 9l6-6 6 6M18 15l-6 6-6-6"
+            />
+          </svg>
+        </div>
+
+        <div
+          class="todo-item flex justify-between flex-col gap-2 bg-gray-50 p-2 min-w-80 border-2 border-gray-200 rounded-md"
+          draggable="true"
+        >
+          <h3 class="todo-title text-xl font-bold">Learn Tailwind</h3>
+          <p class="todo-desc text-gray-800">Learn Tailwind</p>
+          <span
+            class="bg-orange-400 text-white font-bold py-1 px-2 rounded-xl w-fit text-xs"
+          >
+            Medium
+          </span>
+        </div>
+        <div
+          class="todo-item flex justify-between flex-col gap-2 bg-gray-50 p-2 min-w-80 border-2 border-gray-200 rounded-md"
+          draggable="true"
+        >
+          <h3 class="todo-title text-xl font-bold">Learn Tailwind</h3>
+          <p class="todo-desc text-gray-800">Learn Tailwind</p>
+          <span
+            class="bg-orange-400 text-white font-bold py-1 px-2 rounded-xl w-fit text-xs"
+          >
+            Medium
+          </span>
+        </div>
+        <div class="input-section flex justify-between">
+          <input
+            type="text"
+            name=""
+            id="todo-input"
+            placeholder="Enter your todo"
+            class="border rounded-md p-2"
+          />
+          <button
+            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md"
+            onclick="addTodo()"
+          >
+            Add
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- ! Remaining Learn about drag & drop and complete the taskify.html -->
+    <script>
+      const todoItems = document.getElementsByClassName("todo-item");
+      draggable = "true";
+
+      for (let i = 0; i < todoItems.length; i++) {
+        todoItems[i].addEventListener("dragstart", (e) => {
+          console.log("dragstart");
+
+          e.dataTransfer.setData("text/plain", e.target.id);
+        });
+      }
+
+      const dropZones = document.getElementsByClassName("drop-zone");
+      for (let i = 0; i < dropZones.length; i++) {
+        dropZones[i].addEventListener("dragover", (e) => {
+          e.preventDefault();
+        });
+        dropZones[i].addEventListener("dragenter", (e) => {
+          e.preventDefault();
+          e.target.classList.add("bg-gray-200");
+        });
+        dropZones[i].addEventListener("dragleave", (e) => {
+          e.preventDefault();
+          e.target.classList.remove("bg-gray-200");
+        });
+        dropZones[i].addEventListener("drop", (e) => {
+          e.preventDefault();
+          const data = e.dataTransfer.getData("text/plain");
+          console.log(data);
+
+          const target = document.getElementById(data);
+          target.parentNode.insertBefore(e.target, target);
+        });
+      }
+      //   const myElement = document.getElementById("my-element");
+
+      //   myElement.addEventListener("dragstart", (event) => {
+      //     event.dataTransfer.setData("text/plain", event.target.id);
+      //   });
+    </script>
+  </body>
+</html>
